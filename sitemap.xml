@@ -3,76 +3,76 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://kongsys.me/systemd-mount/</loc>
+    <loc>https://kongsys.github.io/systemd-mount/</loc>
     <lastmod>2019-01-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kongsys.me/about/</loc>
+    <loc>https://kongsys.github.io/about/</loc>
     <lastmod>2019-01-25T23:07:17+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kongsys.me/termtosvg-record-terminal/</loc>
+    <loc>https://kongsys.github.io/termtosvg-record-terminal/</loc>
     <lastmod>2019-01-25T17:50:19+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kongsys.me/tags/fstab/</loc>
+    <loc>https://kongsys.github.io/tags/fstab/</loc>
     <lastmod>2019-01-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kongsys.me/</loc>
+    <loc>https://kongsys.github.io/</loc>
     <lastmod>2019-01-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kongsys.me/tags/linux/</loc>
+    <loc>https://kongsys.github.io/tags/linux/</loc>
     <lastmod>2019-01-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kongsys.me/tags/mount/</loc>
+    <loc>https://kongsys.github.io/tags/mount/</loc>
     <lastmod>2019-01-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kongsys.me/post/</loc>
+    <loc>https://kongsys.github.io/post/</loc>
     <lastmod>2019-01-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kongsys.me/tags/record/</loc>
-    <lastmod>2019-01-25T17:50:19+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://kongsys.me/tags/systemd/</loc>
-    <lastmod>2019-01-26T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://kongsys.me/tags/</loc>
-    <lastmod>2019-01-26T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://kongsys.me/tags/terminal/</loc>
+    <loc>https://kongsys.github.io/tags/record/</loc>
     <lastmod>2019-01-25T17:50:19+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kongsys.me/tags/tools/</loc>
+    <loc>https://kongsys.github.io/tags/systemd/</loc>
+    <lastmod>2019-01-26T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kongsys.github.io/tags/</loc>
+    <lastmod>2019-01-26T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kongsys.github.io/tags/terminal/</loc>
+    <lastmod>2019-01-25T17:50:19+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kongsys.github.io/tags/tools/</loc>
     <lastmod>2019-01-25T17:50:19+08:00</lastmod>
     <priority>0</priority>
   </url>

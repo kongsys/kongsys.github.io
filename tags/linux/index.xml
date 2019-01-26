@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linux on Kongsys&#39;s blog</title>
-    <link>https://kongsys.me/tags/linux/</link>
+    <link>https://kongsys.github.io/tags/linux/</link>
     <description>Recent content in Linux on Kongsys&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 26 Jan 2019 09:18:21 +0800</lastBuildDate>
     
-	<atom:link href="https://kongsys.me/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://kongsys.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>systemd mount</title>
-      <link>https://kongsys.me/systemd-mount/</link>
+      <link>https://kongsys.github.io/systemd-mount/</link>
       <pubDate>Sat, 26 Jan 2019 09:18:21 +0800</pubDate>
       
-      <guid>https://kongsys.me/systemd-mount/</guid>
+      <guid>https://kongsys.github.io/systemd-mount/</guid>
       <description>介绍 经常碰到因为 fstab 里面的记录错误引起开机挂载失败，导致系统开机失败，systemd 提供一个 mount 的机制
 systemd 还提供了一个 automount ，大体是这样的，当有读写操作一个磁盘挂载点的时候，会触发 systemd 的automount ，systemd 会将 automount 对应的 mount 挂载上，systemd 挂载过程中会阻塞其他进程读写操作，直到挂载完成
 

@@ -2,75 +2,75 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Kongsys&#39;s blog</title>
-    <link>https://kongsys.me/tags/</link>
+    <link>https://kongsys.github.io/tags/</link>
     <description>Recent content in Tags on Kongsys&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 26 Jan 2019 09:18:21 +0800</lastBuildDate>
     
-	<atom:link href="https://kongsys.me/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://kongsys.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Fstab</title>
-      <link>https://kongsys.me/tags/fstab/</link>
+      <link>https://kongsys.github.io/tags/fstab/</link>
       <pubDate>Sat, 26 Jan 2019 09:18:21 +0800</pubDate>
       
-      <guid>https://kongsys.me/tags/fstab/</guid>
+      <guid>https://kongsys.github.io/tags/fstab/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Linux</title>
-      <link>https://kongsys.me/tags/linux/</link>
+      <link>https://kongsys.github.io/tags/linux/</link>
       <pubDate>Sat, 26 Jan 2019 09:18:21 +0800</pubDate>
       
-      <guid>https://kongsys.me/tags/linux/</guid>
+      <guid>https://kongsys.github.io/tags/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Mount</title>
-      <link>https://kongsys.me/tags/mount/</link>
+      <link>https://kongsys.github.io/tags/mount/</link>
       <pubDate>Sat, 26 Jan 2019 09:18:21 +0800</pubDate>
       
-      <guid>https://kongsys.me/tags/mount/</guid>
+      <guid>https://kongsys.github.io/tags/mount/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Record</title>
-      <link>https://kongsys.me/tags/record/</link>
+      <link>https://kongsys.github.io/tags/record/</link>
       <pubDate>Fri, 25 Jan 2019 17:50:19 +0800</pubDate>
       
-      <guid>https://kongsys.me/tags/record/</guid>
+      <guid>https://kongsys.github.io/tags/record/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Systemd</title>
-      <link>https://kongsys.me/tags/systemd/</link>
+      <link>https://kongsys.github.io/tags/systemd/</link>
       <pubDate>Sat, 26 Jan 2019 09:18:21 +0800</pubDate>
       
-      <guid>https://kongsys.me/tags/systemd/</guid>
+      <guid>https://kongsys.github.io/tags/systemd/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Terminal</title>
-      <link>https://kongsys.me/tags/terminal/</link>
+      <link>https://kongsys.github.io/tags/terminal/</link>
       <pubDate>Fri, 25 Jan 2019 17:50:19 +0800</pubDate>
       
-      <guid>https://kongsys.me/tags/terminal/</guid>
+      <guid>https://kongsys.github.io/tags/terminal/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tools</title>
-      <link>https://kongsys.me/tags/tools/</link>
+      <link>https://kongsys.github.io/tags/tools/</link>
       <pubDate>Fri, 25 Jan 2019 17:50:19 +0800</pubDate>
       
-      <guid>https://kongsys.me/tags/tools/</guid>
+      <guid>https://kongsys.github.io/tags/tools/</guid>
       <description></description>
     </item>
     
