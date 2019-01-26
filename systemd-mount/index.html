@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.51-DEV" />
+
+  
+  <meta name="description" content="Some description">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://kongsys.me/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://kongsys.me/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://kongsys.me/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://kongsys.me/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://kongsys.me/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://kongsys.me/css/bootstrap.min.css" />
+
+  
+  <title>systemd mount | Kongsys&#39;s blog</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #fff;
+}
+
+
+
+body {
+  color: #212529;
+}
+
+
+
+a {
+  color: #007bff;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #0056b3;
+}
+
+
+
+.custom-navbar {
+  background-color: #212529;
+}
+
+
+
+.custom-navbar a {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(255, 255, 255, 1);
+}
+
+
+
+.container {
+  max-width: 800px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 2px 4px;
+  color: inherit; 
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: .9em;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+</style>
+</head>
+
+<body>
+  <nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/">Posts</a>
+    
+    <a href="/tags/">Tags</a>
+    
+    <a href="/about/">About</a>
+    
+    <a href="/index.xml">RSS</a>
+    
+  </div>
+</nav>
+  
+  <div class="container">
+    <article>
+      <h1>systemd mount</h1>
+<p>
+  <small class="text-secondary">
+  
+  
+  Jan 26, 2019
+  </small>
+  
+
+<small><code><a href="https://kongsys.me/tags/systemd">systemd</a></code></small>
+
+
+<small><code><a href="https://kongsys.me/tags/mount">mount</a></code></small>
+
+
+<small><code><a href="https://kongsys.me/tags/fstab">fstab</a></code></small>
+
+
+<small><code><a href="https://kongsys.me/tags/linux">linux</a></code></small>
+
+</p>
+
+
+<h1 id="介绍">介绍</h1>
+
+<p>经常碰到因为 fstab 里面的记录错误引起开机挂载失败，导致系统开机失败，systemd 提供一个 mount 的机制</p>
+
+<p>systemd 还提供了一个 automount ，大体是这样的，当有读写操作一个磁盘挂载点的时候，会触发 systemd 的automount ，systemd 会将 automount  对应的 mount 挂载上，systemd 挂载过程中会阻塞其他进程读写操作，直到挂载完成</p>
+
+<p></br></p>
+
+<p>举个例子 服务器上有一个 /dev/sdd1 磁盘分区，文件系统是 ext4 ，下面是这块磁盘的 uuid 之类的一些信息</p>
+
+<pre><code>/dev/sdd1: UUID=&quot;d01d18d6-5baf-4466-b7d9-4a78fa355605&quot; TYPE=&quot;ext4&quot; PARTLABEL=&quot;primary&quot; PARTUUID=&quot;62625e45-e220-4763-b768-cdcd72cd111f&quot;
+</code></pre>
+
+<p>我们写两个 systemd 文件，.mount 和 .automount 文件,  磁盘的挂载路径是 /mnt/disk2</p>
+
+<p>请注意，.mount和 .automount 是文件的后缀名，两个文件的前缀名要求一致</p>
+
+<p>前缀名和挂载点路径挂钩，linux 的目录分隔符是 / 在前缀名中我们用 - 代替，跟路径的 / 可以ignore，我们把这两个文件放到 /etc/systemd/system 目录，大多数的Linux发行版都遵从这个规则</p>
+
+<p></br></p>
+
+<blockquote>
+<p>file:  /etc/systemd/system/mnt-disk2.mount</p>
+</blockquote>
+
+<p>what 就是磁盘的路径，多盘的服务器，系统扫描到的磁盘顺序可能不同，建议使用uuid或者part uuid，这里我们使用 uuid</p>
+
+<p>where 就是挂载路径，type 和 options 指文件系统和文件系统挂载参数</p>
+
+<p>wantedby 指依赖的 service 或者 target</p>
+
+<p>文件内容如下:</p>
+
+<pre><code>[Unit]
+Description=Additional drive
+ 
+[Mount]
+What=/dev/disk/by-uuid/d01d18d6-5baf-4466-b7d9-4a78fa355605
+Where=/mnt/disk2
+Type=ext4
+Options=defaults,noatime,nodiratime
+ 
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+
+<p></br></p>
+
+<blockquote>
+<p>file: /etc/systemd/system/mnt-disk2.automount</p>
+</blockquote>
+
+<p>where 就是挂载点了，当这个挂载不是开机自动挂载的时候，读写目录的时候会 trigger 自动挂载</p>
+
+<pre><code>Description=Automount Additional Drive
+ 
+[Automount]
+Where=/mnt/disk2
+ 
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+
+<p></br></p>
+
+<p>写好两个文件后，<code>systemctl daemon-reload;systemctl enable mnt-disk2.mount;</code></p>
+
+<p>接着 执行 <code>ls /mnt/disk2</code>  trigger automount 或者 执行 <code>systemctl start mnt-disk2.mount</code>  挂载目录</p>
+
+<p></br></p>
+
+<p>trigger automount的日志</p>
+
+<pre><code>[root@test system]# journalctl -f &amp;
+[root@test system]# ls /mnt/disk2/
+Jan 04 12:08:36 m7-common-devops01 systemd[1]: Got automount request for /mnt/disk2, triggered by 26751 (ls)
+Jan 04 12:08:36 m7-common-devops01 systemd[1]: Mounting Additional drive...
+Jan 04 12:08:36 m7-common-devops01 kernel: EXT4-fs (sdd1): mounted filesystem with ordered data mode. Opts: (null)
+Jan 04 12:08:36 m7-common-devops01 systemd[1]: Mounted Additional drive.
+</code></pre>
+
+    </article>
+  </div>
+
+  
+  
+  
+
+  
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#216942",
+      "text": "#b2d192"
+    },
+    "button": {
+      "background": "#afed71"
+    }
+  }
+})});
+</script>
+
+</body>
+
+</html>

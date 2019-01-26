@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Kongsys&#39;s blog</title>
+    <link>https://kongsys.me/post/</link>
+    <description>Recent content in Posts on Kongsys&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 26 Jan 2019 09:18:21 +0800</lastBuildDate>
+    
+	<atom:link href="https://kongsys.me/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>systemd mount</title>
+      <link>https://kongsys.me/systemd-mount/</link>
+      <pubDate>Sat, 26 Jan 2019 09:18:21 +0800</pubDate>
+      
+      <guid>https://kongsys.me/systemd-mount/</guid>
+      <description>介绍 经常碰到因为 fstab 里面的记录错误引起开机挂载失败，导致系统开机失败，systemd 提供一个 mount 的机制
+systemd 还提供了一个 automount ，大体是这样的，当有读写操作一个磁盘挂载点的时候，会触发 systemd 的automount ，systemd 会将 automount 对应的 mount 挂载上，systemd 挂载过程中会阻塞其他进程读写操作，直到挂载完成
+
+举个例子 服务器上有一个 /dev/sdd1 磁盘分区，文件系统是 ext4 ，下面是这块磁盘的 uuid 之类的一些信息
+/dev/sdd1: UUID=&amp;quot;d01d18d6-5baf-4466-b7d9-4a78fa355605&amp;quot; TYPE=&amp;quot;ext4&amp;quot; PARTLABEL=&amp;quot;primary&amp;quot; PARTUUID=&amp;quot;62625e45-e220-4763-b768-cdcd72cd111f&amp;quot;  我们写两个 systemd 文件，.mount 和 .automount 文件, 磁盘的挂载路径是 /mnt/disk2
+请注意，.mount和 .automount 是文件的后缀名，两个文件的前缀名要求一致
+前缀名和挂载点路径挂钩，linux 的目录分隔符是 / 在前缀名中我们用 - 代替，跟路径的 / 可以ignore，我们把这两个文件放到 /etc/systemd/system 目录，大多数的Linux发行版都遵从这个规则
+
+ file: /etc/systemd/system/mnt-disk2.mount
+ what 就是磁盘的路径，多盘的服务器，系统扫描到的磁盘顺序可能不同，建议使用uuid或者part uuid，这里我们使用 uuid
+where 就是挂载路径，type 和 options 指文件系统和文件系统挂载参数</description>
+    </item>
+    
+    <item>
+      <title>Termtosvg Record Terminal</title>
+      <link>https://kongsys.me/termtosvg-record-terminal/</link>
+      <pubDate>Fri, 25 Jan 2019 17:50:19 +0800</pubDate>
+      
+      <guid>https://kongsys.me/termtosvg-record-terminal/</guid>
+      <description> Introduction termtosvg 是一个用 python 编写的 Unix 终端录制器，它可以将你的命令行会话保存为 SVG 动画
+termtosvg 的特点
+ 可以制作嵌入项目主页的简洁美观的动画 可以在 SVG 模版中自定义配色、终端 UI 和动画 兼容 asciinema 录制格式  termtosvg 要求 python3.5 或者更高的版本
+这里我们使用 pip 安装 termtosvg ，所以需要你的系统上有 pip，pip 安装很简单，不同的系统可以通过 brew、yum、apt 去安装
+ pip3 install termtosvg
+ 执行 termtosvg 即可录制，退出录制使用 exit 或者 Control-D
+termtosvg hello.svg #开始录制，并且将录制内容保存到 hello.svg  </description>
+    </item>
+    
+  </channel>
+</rss>

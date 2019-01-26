@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tools on Kongsys&#39;s blog</title>
+    <link>https://kongsys.me/tags/tools/</link>
+    <description>Recent content in Tools on Kongsys&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 25 Jan 2019 17:50:19 +0800</lastBuildDate>
+    
+	<atom:link href="https://kongsys.me/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Termtosvg Record Terminal</title>
+      <link>https://kongsys.me/termtosvg-record-terminal/</link>
+      <pubDate>Fri, 25 Jan 2019 17:50:19 +0800</pubDate>
+      
+      <guid>https://kongsys.me/termtosvg-record-terminal/</guid>
+      <description> Introduction termtosvg 是一个用 python 编写的 Unix 终端录制器，它可以将你的命令行会话保存为 SVG 动画
+termtosvg 的特点
+ 可以制作嵌入项目主页的简洁美观的动画 可以在 SVG 模版中自定义配色、终端 UI 和动画 兼容 asciinema 录制格式  termtosvg 要求 python3.5 或者更高的版本
+这里我们使用 pip 安装 termtosvg ，所以需要你的系统上有 pip，pip 安装很简单，不同的系统可以通过 brew、yum、apt 去安装
+ pip3 install termtosvg
+ 执行 termtosvg 即可录制，退出录制使用 exit 或者 Control-D
+termtosvg hello.svg #开始录制，并且将录制内容保存到 hello.svg  </description>
+    </item>
+    
+  </channel>
+</rss>

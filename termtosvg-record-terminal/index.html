@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.51-DEV" />
+
+  
+  <meta name="description" content="Some description">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://kongsys.me/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://kongsys.me/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://kongsys.me/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://kongsys.me/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://kongsys.me/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://kongsys.me/css/bootstrap.min.css" />
+
+  
+  <title>Termtosvg Record Terminal | Kongsys&#39;s blog</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #fff;
+}
+
+
+
+body {
+  color: #212529;
+}
+
+
+
+a {
+  color: #007bff;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #0056b3;
+}
+
+
+
+.custom-navbar {
+  background-color: #212529;
+}
+
+
+
+.custom-navbar a {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(255, 255, 255, 1);
+}
+
+
+
+.container {
+  max-width: 800px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 2px 4px;
+  color: inherit; 
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: .9em;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+</style>
+</head>
+
+<body>
+  <nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/">Posts</a>
+    
+    <a href="/tags/">Tags</a>
+    
+    <a href="/about/">About</a>
+    
+    <a href="/index.xml">RSS</a>
+    
+  </div>
+</nav>
+  
+  <div class="container">
+    <article>
+      <h1>Termtosvg Record Terminal</h1>
+<p>
+  <small class="text-secondary">
+  
+  
+  Jan 25, 2019
+  </small>
+  
+
+<small><code><a href="https://kongsys.me/tags/tools">tools</a></code></small>
+
+
+<small><code><a href="https://kongsys.me/tags/terminal">terminal</a></code></small>
+
+
+<small><code><a href="https://kongsys.me/tags/record">record</a></code></small>
+
+</p>
+
+
+<h2 id="introduction">Introduction</h2>
+
+<p>termtosvg 是一个用 python 编写的 Unix 终端录制器，它可以将你的命令行会话保存为 SVG 动画</p>
+
+<p>termtosvg 的特点</p>
+
+<ul>
+<li>可以制作嵌入项目主页的简洁美观的动画</li>
+<li>可以在 SVG 模版中自定义配色、终端 UI 和动画</li>
+<li>兼容 asciinema 录制格式</li>
+</ul>
+
+<p>termtosvg 要求 python3.5 或者更高的版本</p>
+
+<p>这里我们使用 pip 安装 termtosvg ，所以需要你的系统上有 pip，pip 安装很简单，不同的系统可以通过 brew、yum、apt 去安装</p>
+
+<blockquote>
+<p>pip3 install termtosvg</p>
+</blockquote>
+
+<p>执行 <code>termtosvg</code>  即可录制，退出录制使用 <code>exit</code> 或者 <code>Control-D</code></p>
+
+<pre><code>termtosvg hello.svg #开始录制，并且将录制内容保存到 hello.svg
+</code></pre>
+
+<p><img src="/hello.svg"></p>
+
+    </article>
+  </div>
+
+  
+  
+  
+
+  
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#216942",
+      "text": "#b2d192"
+    },
+    "button": {
+      "background": "#afed71"
+    }
+  }
+})});
+</script>
+
+</body>
+
+</html>
