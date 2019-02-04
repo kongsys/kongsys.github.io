@@ -34,7 +34,7 @@
   <link rel="stylesheet" href="https://kongsys.github.io/css/bootstrap.min.css" />
 
   
-  <title>Tags | Kongsys&#39;s blog</title>
+  <title>DTrace | Kongsys&#39;s blog</title>
   
 
   <style>
@@ -183,63 +183,85 @@ blockquote,
   
   <div class="container">
     <article>
-      <h1>Tags</h1>
-
-
-
+      <h1>DTrace</h1>
+<p>
+  <small class="text-secondary">
   
   
-  
-  <p><a href="https://kongsys.github.io/tags/dtrace/"><code>dtrace</code></a> 1</p>
-  
-
-  
-  
-  
-  <p><a href="https://kongsys.github.io/tags/freebsd/"><code>freebsd</code></a> 1</p>
+  Feb 4, 2019
+  </small>
   
 
-  
-  
-  
-  <p><a href="https://kongsys.github.io/tags/fstab/"><code>fstab</code></a> 1</p>
-  
+<small><code><a href="https://kongsys.github.io/tags/dtrace">dtrace</a></code></small>
 
-  
-  
-  
-  <p><a href="https://kongsys.github.io/tags/linux/"><code>linux</code></a> 1</p>
-  
 
-  
-  
-  
-  <p><a href="https://kongsys.github.io/tags/mount/"><code>mount</code></a> 1</p>
-  
+<small><code><a href="https://kongsys.github.io/tags/freebsd">freebsd</a></code></small>
 
-  
-  
-  
-  <p><a href="https://kongsys.github.io/tags/record/"><code>record</code></a> 1</p>
-  
+</p>
 
-  
-  
-  
-  <p><a href="https://kongsys.github.io/tags/systemd/"><code>systemd</code></a> 1</p>
-  
 
-  
-  
-  
-  <p><a href="https://kongsys.github.io/tags/terminal/"><code>terminal</code></a> 1</p>
-  
+<h1 id="about-dtrace">About DTrace</h1>
 
-  
-  
-  
-  <p><a href="https://kongsys.github.io/tags/tools/"><code>tools</code></a> 1</p>
-  
+<p>Dtrace 是一个性能分析和问题定位工具，目前Solaris, Mac OS 和 FreeBSD 都有这个工具，还有 OracleLinux</p>
+
+<p>Dtrace 提供一门语言 D , 用来写 DTrace 脚本或者 CLI ， D 很像 C 和 awk</p>
+
+<p>下面是一个 DTrace 的文档链接，来自 Oracle 的</p>
+
+<p><a href="https://docs.oracle.com/cd/E24847_01/html/E22192/docinfo.html#scrolltoc">DTrace docs</a></p>
+
+<h1 id="example">Example</h1>
+
+<h2 id="trace-d">trace.d</h2>
+
+<pre><code class="language-d">syscall:freebad:write:entry
+/execname == &quot;curl&quot;/
+{
+    printf(&quot;%d WRITE %d %s\n&quot;, pid, arg2, stringof(copyin(arg1, arg2)));
+}
+
+syscall:freebsd:exit:entry
+/execname == &quot;curl&quot;/
+{
+    printf(&quot;%d EXIT %d\n&quot;, pid, arg0);
+}
+</code></pre>
+
+<p>解释下上面的文件内容</p>
+
+<p>syscall:freebsd:write:entry 这是一个探测器的格式(Dtrace Probes) 探测器可以通过 <code>dtrace -l</code> 得到</p>
+
+<p>格式含义是:  <code>provider:module:function:name</code></p>
+
+<p>每一个探测器都有一个唯一的整数ID</p>
+
+<p><code>/execname == &quot;curl&quot;/</code> 这是一个 <code>dtrace predicates</code> 表达式, 表达式括在 / / 内,对于任意的 probes 可以忽略 predicates， 探测器被触发时，将对 predicates 进行评估以确定是否执行关联的操作</p>
+
+<p>{ } 中是dtrace 的操作</p>
+
+<h2 id="使用">使用</h2>
+
+<p><code>dtrace -s trace.d</code></p>
+
+<p>使用即可,当系统上有 <code>curl</code> 执行时，dtrace 将会输出 trace 到的内容, 输出如下, 中间的空行是 <code>http</code> 本身的 <code>\r\n</code> 造成的</p>
+
+<pre><code class="language-bash">root@freebsd-10-1:~ # dtrace -s trace.d
+dtrace: script 'trace.d' matched 2 probes
+CPU     ID                    FUNCTION:NAME
+  0  53680                      write:entry 2915 WRITE 17 HTTP/1.0 200 OK
+
+  0  53680                      write:entry 2915 WRITE 38 Server: SimpleHTTP/0.6 Python/2.7.13
+
+  0  53680                      write:entry 2915 WRITE 37 Date: Mon, 04 Feb 2019 01:23:06 GMT
+
+  0  53680                      write:entry 2915 WRITE 43 Content-type: text/html; charset=US-ASCII
+
+  0  53680                      write:entry 2915 WRITE 21 Content-Length: 178
+
+  0  53680                      write:entry 2915 WRITE 2
+
+  0  53674                       exit:entry 2915 EXIT 0
+</code></pre>
 
     </article>
   </div>
